@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesesuaian - Monitoring Mikrotrans</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans h-screen w-screen overflow-hidden flex items-center justify-center p-1.5">
+
+    <div class="w-full h-full bg-[#060b19] rounded-2xl shadow-2xl shadow-black/80 flex overflow-hidden relative">
+
+        <!-- SIDEBAR NAVIGASI -->
+        <aside class="w-20 bg-[#092265] shrink-0 select-none h-full relative z-50 border-r border-blue-900/50 flex flex-col justify-between items-center pt-1.5 pb-2 overflow-visible">
+            
+            <!-- HEADER LOGO ATAS (IKON BINTANG TETAP POSISI ATAS) -->
+            <div class="w-full flex flex-col items-center text-center shrink-0 pt-0 mb-0">
+                <div class="w-8 h-8 flex items-center justify-center text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20"></path>
+                        <path d="M2 12h20"></path>
+                        <path d="m4.93 4.93 14.14 14.14"></path>
+                        <path d="m4.93 19.07 14.14-14.14"></path>
+                    </svg>
+                </div>
+                <!-- GARIS PEMBATAS ATAS -->
+                <div class="w-7 h-[2px] bg-white/70 rounded-full mt-0.5 mb-0.5"></div>
+            </div>
+
+            <!-- NAVIGASI MENU (DIBERI PT-2 AGAR IKON MENU TURUN DARI IKON BINTANG) -->
+            <nav class="flex-1 w-full flex flex-col items-center justify-evenly pt-2 pb-1 min-h-0 overflow-hidden">
+                <div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='index.html' title='Dashboard Analytics' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-chart-pie'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='ricek_realisasi.html' title='Ricek Realisasi' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-list-check'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='unit_operasi.html' title='Unit Operasi' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-bus'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='validasi_trip.html' title='Validasi Trip' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-square-check'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='headway.html' title='Headway' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-clock'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='kesesuaian.html' title='Kesesuaian' class='nav-btn active w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-sliders'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='cari_bus.html' title='Cari Nomor Bus' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-magnifying-glass'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='manual_do.html' title='Manual DO' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-file-pen'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='update_trip.html' title='Update Trip' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-arrows-rotate'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='update_lokasi.html' title='Update Lokasi' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-location-dot'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='sebaran.html' title='Sebaran' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-map-location-dot'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='list_petugas.html' title='List Petugas' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-users'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='list_operator.html' title='List Operator' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-building'></i>
+                            </a>
+                          </div>            </nav>
+
+            <!-- FOOTER PROFIL USER & POPUP LOGOUT -->
+            <div class="w-full flex justify-center items-center shrink-0 pt-1 relative z-50">
+                
+                <!-- Tombol Trigger Ikon User -->
+                <button 
+                    type="button"
+                    onclick="toggleUserMenu(event)"
+                    id="userMenuBtn"
+                    title="Nama User (Staf)"
+                    class="w-8 h-8 rounded-full border border-blue-400/50 bg-blue-500/10 hover:bg-blue-600/30 active:scale-95 flex items-center justify-center text-white text-xs transition duration-200 focus:outline-none shadow-sm cursor-pointer"
+                >
+                    <i class="fa-solid fa-user-check pointer-events-none"></i>
+                </button>
+
+                <!-- POPUP CARD PROFIL LOGOUT -->
+                <div 
+                    id="userMenuCard" 
+                    class="hidden absolute left-16 bottom-0 w-[280px] bg-[#0a2569] border border-blue-900/80 rounded-2xl shadow-2xl p-5 z-[999] transition-all duration-200 flex flex-col gap-1.5"
+                >
+                    <!-- Role Badge User -->
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="px-2.5 py-0.5 rounded-md bg-blue-500/20 text-blue-300 text-[10px] font-bold tracking-wider uppercase border border-blue-400/30">
+                            Staf                        </span>
+                    </div>
+
+                    <!-- Nama User Dinamis -->
+                    <h3 class="text-lg font-extrabold text-white tracking-wide truncate">
+                        Nama User                    </h3>
+                    
+                    <!-- Email User Dinamis -->
+                    <p class="text-xs text-slate-200 font-normal opacity-90 truncate mb-3">
+                        user@transjakarta.co.id                    </p>
+                    
+                    <!-- Tombol Keluar (Logout) -->
+                    <a 
+                        href="login.html" 
+                        class="w-fit flex items-center gap-2 text-red-500 hover:text-red-400 font-semibold text-sm transition duration-150 group cursor-pointer"
+                    >
+                        <i class="fa-solid fa-arrow-right-from-bracket text-base transform group-hover:-translate-x-0.5 transition"></i>
+                        <span>Keluar</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 flex flex-col min-w-0 bg-slate-950 h-full overflow-hidden">
+            <header class="h-[80px] bg-slate-950 px-6 flex justify-between items-center shrink-0">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center text-lg shadow-md">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-base font-bold text-white tracking-wide">Kesesuaian</h2>
+                        <p class="text-xs text-slate-400"></p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="flex-1 p-5 flex flex-col gap-5 overflow-y-auto no-scrollbar min-h-0">
+                
+<div class="flex-1 flex flex-col gap-3 min-h-0">
+    
+    <!-- BARIS PERIODE TANGGAL DI ATAS -->
+    <form method="GET" action="" id="formPeriodeKesesuaian" class="flex items-center gap-2 text-xs shrink-0 relative z-30">
+        <span class="text-slate-300 font-medium">Periode</span>
+        <input 
+            type="date" 
+            name="periode" 
+            id="inputPeriode"
+            value="2000-01-04" 
+            onchange="document.getElementById('formPeriodeKesesuaian').submit()" 
+            onclick="try{ this.showPicker(); }catch(e){}"
+            class="bg-slate-900 text-white border border-slate-700 px-3 py-1 rounded-lg focus:outline-none cursor-pointer shadow-sm [color-scheme:dark]"
+        >
+    </form>
+
+    <!-- HEADER TOP BAR: RUTE LAYANAN, TIPE TRIP, TOMBOL CEK & EXPORT ICON -->
+    <div class="bg-slate-900/90 p-2.5 rounded-xl flex flex-wrap justify-between items-center gap-3 shrink-0 shadow-md border border-slate-800 text-xs">
+        <div class="flex items-center gap-4 flex-wrap">
+            <div class="flex items-center gap-2">
+                <span class="text-slate-300 font-medium">Rute Layanan</span>
+                <select 
+                    name="rute" 
+                    form="formPeriodeKesesuaian"
+                    onchange="document.getElementById('formPeriodeKesesuaian').submit()"
+                    class="bg-slate-950/80 text-slate-200 border border-slate-800 hover:border-slate-700 focus:border-blue-500 px-3 py-1 rounded-lg font-medium focus:outline-none cursor-pointer text-xs transition shadow-inner"
+                >
+                    <option value="JAK1" class="bg-slate-900 text-white" >JAK1 TANJUNG PRIOK - PLUMPANG</option>
+                    <option value="JAK80" class="bg-slate-900 text-white" >JAK80 RAWA BUAYA - RAWA KOMPENI</option>
+                    <option value="JAK02" class="bg-slate-900 text-white" >JAK02 KAMPUNG RAMBUTAN - PASAR MINGGU</option>
+                    <option value="JAK10" class="bg-slate-900 text-white" >JAK10 TANAH ABANG - KEBAYORAN LAMA</option>
+                </select>
+                <span class="font-bold text-white uppercase ml-1">ZZRUTEZZ</span>
+            </div>
+
+            <button type="button" onclick="document.getElementById('formPeriodeKesesuaian').submit()" class="px-5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg font-medium border border-slate-700 transition shadow-sm">
+                cek
+            </button>
+
+            <!-- Status Tipe Trip -->
+            <span class="text-slate-200 font-medium bg-slate-950/60 px-3 py-1 rounded-lg border border-slate-800/80 ml-2">
+                Looping Trip            </span>
+        </div>
+
+        <!-- Tombol Icon Export Download -->
+        <button type="button" onclick="exportKesesuaianCSV()" title="Export Data" class="p-2 bg-blue-400 hover:bg-blue-300 text-slate-950 rounded-xl transition shadow-md flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+        </button>
+    </div>
+
+    <!-- MAIN CONTENT 2 TABEL KESESUAIAN -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-2.5 flex-1 min-h-0">
+        
+        <!-- TABEL KIRI (JAK1_TJPRIOK) -->
+        <div class="lg:col-span-6 bg-slate-900 rounded-xl border border-slate-800/80 flex flex-col overflow-hidden shadow-md">
+            <div class="p-2 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between">
+                <span class="text-xs font-bold text-white tracking-wide">ZZRUTEZZ_TJPRIOK</span>
+                <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded font-mono">Arah 1</span>
+            </div>
+            <div class="flex-1 overflow-auto no-scrollbar">
+                <table class="w-full text-xs text-left text-slate-300 whitespace-nowrap">
+                    <thead class="text-[11px] bg-slate-950 text-slate-400 sticky top-0 border-b border-slate-800 z-10">
+                        <tr>
+                            <th class="px-2.5 py-2">Tanggal</th>
+                            <th class="px-2.5 py-2">Nomor Bus</th>
+                            <th class="px-2.5 py-2">Berangkat</th>
+                            <th class="px-2.5 py-2">Dibuat</th>
+                            <th class="px-2.5 py-2 text-center">Time Diff</th>
+                            <th class="px-2.5 py-2">User</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 text-[11px]">
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-541</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:00</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:00</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <span class="text-slate-400">0</span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">100948,SLAMAT...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-558</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:02</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:02</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <span class="text-slate-400">0</span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">100948,SLAMAT...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-568</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:04</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:04</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <span class="text-slate-400">0</span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">100948,SLAMAT...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-540</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:07</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:07</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <span class="text-slate-400">0</span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">100948,SLAMAT...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-552</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:11</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:11</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <span class="text-slate-400">0</span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">100948,SLAMAT...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-557</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:16</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:16</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <span class="text-slate-400">0</span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">100948,SLAMAT...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-553</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:18</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:18</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <span class="text-slate-400">0</span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">100948,SLAMAT...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-567</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:21</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:21</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <span class="text-slate-400">0</span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">100948,SLAMAT...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-565</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:24</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:24</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <span class="text-slate-400">0</span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">100948,SLAMAT...</td>
+                        </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TABEL KANAN (JAK1_PLUMPANG) -->
+        <div class="lg:col-span-6 bg-slate-900 rounded-xl border border-slate-800/80 flex flex-col overflow-hidden shadow-md">
+            <div class="p-2 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between">
+                <span class="text-xs font-bold text-white tracking-wide">ZZRUTEZZ_PLUMPANG</span>
+                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-mono">Arah 2</span>
+            </div>
+            <div class="flex-1 overflow-auto no-scrollbar">
+                <table class="w-full text-xs text-left text-slate-300 whitespace-nowrap">
+                    <thead class="text-[11px] bg-slate-950 text-slate-400 sticky top-0 border-b border-slate-800 z-10">
+                        <tr>
+                            <th class="px-2.5 py-2">Tanggal</th>
+                            <th class="px-2.5 py-2">Nomor Bus</th>
+                            <th class="px-2.5 py-2">Berangkat</th>
+                            <th class="px-2.5 py-2">Dibuat</th>
+                            <th class="px-2.5 py-2 text-center">Time Diff</th>
+                            <th class="px-2.5 py-2">User</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 text-[11px]">
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-551</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:00</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">00:00</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <!-- BADGE MERAH SMOOTH CARD SOFT -->
+                                    <span class="bg-red-500/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded-full font-semibold inline-block">
+                                        300                                    </span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">102437,SAPTO N...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-559</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:05</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">00:00</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <!-- BADGE MERAH SMOOTH CARD SOFT -->
+                                    <span class="bg-red-500/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded-full font-semibold inline-block">
+                                        305                                    </span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">102437,SAPTO N...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-543</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:10</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">00:00</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <!-- BADGE MERAH SMOOTH CARD SOFT -->
+                                    <span class="bg-red-500/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded-full font-semibold inline-block">
+                                        310                                    </span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">102437,SAPTO N...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-544</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:15</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">00:00</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <!-- BADGE MERAH SMOOTH CARD SOFT -->
+                                    <span class="bg-red-500/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded-full font-semibold inline-block">
+                                        315                                    </span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">102437,SAPTO N...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-545</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:20</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">00:00</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <!-- BADGE MERAH SMOOTH CARD SOFT -->
+                                    <span class="bg-red-500/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded-full font-semibold inline-block">
+                                        320                                    </span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">102437,SAPTO N...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-555</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:25</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">00:00</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <!-- BADGE MERAH SMOOTH CARD SOFT -->
+                                    <span class="bg-red-500/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded-full font-semibold inline-block">
+                                        325                                    </span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">102437,SAPTO N...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-542</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:30</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">00:00</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <!-- BADGE MERAH SMOOTH CARD SOFT -->
+                                    <span class="bg-red-500/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded-full font-semibold inline-block">
+                                        330                                    </span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">102437,SAPTO N...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-2056</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:35</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">00:00</td>
+                            <td class="px-2.5 py-1.5 text-center font-mono">
+                                                                    <!-- BADGE MERAH SMOOTH CARD SOFT -->
+                                    <span class="bg-red-500/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded-full font-semibold inline-block">
+                                        335                                    </span>
+                                                            </td>
+                            <td class="px-2.5 py-1.5 text-slate-400">102437,SAPTO N...</td>
+                        </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER STATUS BAR REALTIME -->
+    <div class="bg-slate-900/90 px-4 py-1.5 rounded-xl flex justify-between items-center text-[11px] font-mono border border-slate-800 shrink-0 text-slate-400">
+        <div class="flex items-center gap-3">
+            <span id="liveTimestampKesesuaian" class="text-blue-400 font-semibold">--</span>
+            <span class="text-emerald-400 font-semibold flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Server connected
+            </span>
+        </div>
+        <div>
+            update by : <span class="text-slate-300 font-semibold">Mikrotrans</span>
+        </div>
+    </div>
+
+</div>
+
+<!-- SCRIPT LIVE CLOCK & EXPORT CSV KESESUAIAN -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const inputPeriode = document.getElementById('inputPeriode');
+    if (inputPeriode && !inputPeriode.value) {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        
+        inputPeriode.value = `${year}-${month}-${day}`;
+    }
+});
+
+function updateLiveTimestampKesesuaian() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+    const elem = document.getElementById('liveTimestampKesesuaian');
+    if (elem) {
+        elem.innerText = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
+}
+
+setInterval(updateLiveTimestampKesesuaian, 1000);
+updateLiveTimestampKesesuaian();
+
+function exportKesesuaianCSV() {
+    let csv = [];
+    csv.push("--- REKAP KESESUAIAN TRIP ---");
+    csv.push("Rute," + "" + __P.q.rute + "");
+    csv.push("Periode," + "" + __P.iso + "");
+    csv.push("Tipe Trip," + "Looping Trip");
+    csv.push("");
+    
+    csv.push("--- TABEL ARAH 1 ---");
+    csv.push("TANGGAL,NOMOR BUS,BERANGKAT,DIBUAT,TIME DIFF,USER");
+        csv.push("" + __P.dmy + ",KLM-541,05:00,05:00,0,100948,SLAMAT...");
+        csv.push("" + __P.dmy + ",KLM-558,05:02,05:02,0,100948,SLAMAT...");
+        csv.push("" + __P.dmy + ",KLM-568,05:04,05:04,0,100948,SLAMAT...");
+        csv.push("" + __P.dmy + ",KLM-540,05:07,05:07,0,100948,SLAMAT...");
+        csv.push("" + __P.dmy + ",KLM-552,05:11,05:11,0,100948,SLAMAT...");
+        csv.push("" + __P.dmy + ",KLM-557,05:16,05:16,0,100948,SLAMAT...");
+        csv.push("" + __P.dmy + ",KLM-553,05:18,05:18,0,100948,SLAMAT...");
+        csv.push("" + __P.dmy + ",KLM-567,05:21,05:21,0,100948,SLAMAT...");
+        csv.push("" + __P.dmy + ",KLM-565,05:24,05:24,0,100948,SLAMAT...");
+    
+    csv.push("");
+    csv.push("--- TABEL ARAH 2 ---");
+    csv.push("TANGGAL,NOMOR BUS,BERANGKAT,DIBUAT,TIME DIFF,USER");
+        csv.push("" + __P.dmy + ",KLM-551,05:00,00:00,300,102437,SAPTO N...");
+        csv.push("" + __P.dmy + ",KLM-559,05:05,00:00,305,102437,SAPTO N...");
+        csv.push("" + __P.dmy + ",KLM-543,05:10,00:00,310,102437,SAPTO N...");
+        csv.push("" + __P.dmy + ",KLM-544,05:15,00:00,315,102437,SAPTO N...");
+        csv.push("" + __P.dmy + ",KLM-545,05:20,00:00,320,102437,SAPTO N...");
+        csv.push("" + __P.dmy + ",KLM-555,05:25,00:00,325,102437,SAPTO N...");
+        csv.push("" + __P.dmy + ",KLM-542,05:30,00:00,330,102437,SAPTO N...");
+        csv.push("" + __P.dmy + ",KLM-2056,05:35,00:00,335,102437,SAPTO N...");
+    
+    let csvFile = new Blob([csv.join("\n")], { type: "text/csv" });
+    let downloadLink = document.createElement("a");
+    downloadLink.download = "Kesesuaian_" + __P.q.rute + "_" + __P.iso + ".csv";
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+}
+</script>            </div>
+        </main>
+
+    </div>
+
+    <!-- SCRIPT TOGGLE POPUP PROFIL -->
+    <script>
+        function toggleUserMenu(event) {
+            if (event) event.stopPropagation();
+            const menuCard = document.getElementById('userMenuCard');
+            if (menuCard) {
+                menuCard.classList.toggle('hidden');
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const btn = document.getElementById('userMenuBtn');
+            const card = document.getElementById('userMenuCard');
+            if (btn && card && !btn.contains(event.target) && !card.contains(event.target)) {
+                card.classList.add('hidden');
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+    <script>__P.apply();</script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Analytics - Monitoring Mikrotrans</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans h-screen w-screen overflow-hidden flex items-center justify-center p-1.5">
+
+    <div class="w-full h-full bg-[#060b19] rounded-2xl shadow-2xl shadow-black/80 flex overflow-hidden relative">
+
+        <!-- SIDEBAR NAVIGASI -->
+        <aside class="w-20 bg-[#092265] shrink-0 select-none h-full relative z-50 border-r border-blue-900/50 flex flex-col justify-between items-center pt-1.5 pb-2 overflow-visible">
+            
+            <!-- HEADER LOGO ATAS (IKON BINTANG TETAP POSISI ATAS) -->
+            <div class="w-full flex flex-col items-center text-center shrink-0 pt-0 mb-0">
+                <div class="w-8 h-8 flex items-center justify-center text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20"></path>
+                        <path d="M2 12h20"></path>
+                        <path d="m4.93 4.93 14.14 14.14"></path>
+                        <path d="m4.93 19.07 14.14-14.14"></path>
+                    </svg>
+                </div>
+                <!-- GARIS PEMBATAS ATAS -->
+                <div class="w-7 h-[2px] bg-white/70 rounded-full mt-0.5 mb-0.5"></div>
+            </div>
+
+            <!-- NAVIGASI MENU (DIBERI PT-2 AGAR IKON MENU TURUN DARI IKON BINTANG) -->
+            <nav class="flex-1 w-full flex flex-col items-center justify-evenly pt-2 pb-1 min-h-0 overflow-hidden">
+                <div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='index.html' title='Dashboard Analytics' class='nav-btn active w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-chart-pie'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='ricek_realisasi.html' title='Ricek Realisasi' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-list-check'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='unit_operasi.html' title='Unit Operasi' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-bus'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='validasi_trip.html' title='Validasi Trip' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-square-check'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='headway.html' title='Headway' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-clock'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='kesesuaian.html' title='Kesesuaian' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-sliders'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='cari_bus.html' title='Cari Nomor Bus' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-magnifying-glass'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='manual_do.html' title='Manual DO' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-file-pen'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='update_trip.html' title='Update Trip' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-arrows-rotate'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='update_lokasi.html' title='Update Lokasi' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-location-dot'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='sebaran.html' title='Sebaran' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-map-location-dot'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='list_petugas.html' title='List Petugas' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-users'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='list_operator.html' title='List Operator' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-building'></i>
+                            </a>
+                          </div>            </nav>
+
+            <!-- FOOTER PROFIL USER & POPUP LOGOUT -->
+            <div class="w-full flex justify-center items-center shrink-0 pt-1 relative z-50">
+                
+                <!-- Tombol Trigger Ikon User -->
+                <button 
+                    type="button"
+                    onclick="toggleUserMenu(event)"
+                    id="userMenuBtn"
+                    title="Nama User (Staf)"
+                    class="w-8 h-8 rounded-full border border-blue-400/50 bg-blue-500/10 hover:bg-blue-600/30 active:scale-95 flex items-center justify-center text-white text-xs transition duration-200 focus:outline-none shadow-sm cursor-pointer"
+                >
+                    <i class="fa-solid fa-user-check pointer-events-none"></i>
+                </button>
+
+                <!-- POPUP CARD PROFIL LOGOUT -->
+                <div 
+                    id="userMenuCard" 
+                    class="hidden absolute left-16 bottom-0 w-[280px] bg-[#0a2569] border border-blue-900/80 rounded-2xl shadow-2xl p-5 z-[999] transition-all duration-200 flex flex-col gap-1.5"
+                >
+                    <!-- Role Badge User -->
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="px-2.5 py-0.5 rounded-md bg-blue-500/20 text-blue-300 text-[10px] font-bold tracking-wider uppercase border border-blue-400/30">
+                            Staf                        </span>
+                    </div>
+
+                    <!-- Nama User Dinamis -->
+                    <h3 class="text-lg font-extrabold text-white tracking-wide truncate">
+                        Nama User                    </h3>
+                    
+                    <!-- Email User Dinamis -->
+                    <p class="text-xs text-slate-200 font-normal opacity-90 truncate mb-3">
+                        user@transjakarta.co.id                    </p>
+                    
+                    <!-- Tombol Keluar (Logout) -->
+                    <a 
+                        href="login.html" 
+                        class="w-fit flex items-center gap-2 text-red-500 hover:text-red-400 font-semibold text-sm transition duration-150 group cursor-pointer"
+                    >
+                        <i class="fa-solid fa-arrow-right-from-bracket text-base transform group-hover:-translate-x-0.5 transition"></i>
+                        <span>Keluar</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 flex flex-col min-w-0 bg-slate-950 h-full overflow-hidden">
+            <header class="h-[80px] bg-slate-950 px-6 flex justify-between items-center shrink-0">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center text-lg shadow-md">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-base font-bold text-white tracking-wide">Dashboard Analytics</h2>
+                        <p class="text-xs text-slate-400"></p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="flex-1 p-5 flex flex-col gap-5 overflow-y-auto no-scrollbar min-h-0">
+                
+<div class="flex flex-col gap-5">
+    <form method="GET" action="" class="bg-slate-900 p-4 rounded-2xl flex flex-wrap justify-between items-center gap-3 shrink-0 shadow-lg border border-slate-800/80">
+        <div class="flex items-center gap-3 flex-wrap">
+            <div class="flex items-center gap-2 bg-slate-950 px-3.5 py-2 rounded-xl text-xs border border-slate-800/80">
+                <i class="fa-regular fa-calendar text-slate-400"></i>
+                <label for="periode" class="text-slate-400">Periode:</label>
+                <input type="date" name="periode" value="2000-01-04" class="bg-transparent text-white focus:outline-none cursor-pointer">
+            </div>
+
+            <div class="flex items-center gap-2 bg-slate-950 px-3.5 py-2 rounded-xl text-xs border border-slate-800/80">
+                <i class="fa-solid fa-map-pin text-slate-400"></i>
+                <label for="wilayah" class="text-slate-400">Wilayah:</label>
+                <select name="wilayah" class="bg-transparent text-white focus:outline-none cursor-pointer">
+                    <option value="" class="bg-slate-900">Semua Wilayah</option>
+                    <option value="Jakarta Pusat" class="bg-slate-900" >Jakarta Pusat</option>
+                    <option value="Jakarta Utara" class="bg-slate-900" >Jakarta Utara</option>
+                    <option value="Jakarta Barat" class="bg-slate-900" >Jakarta Barat</option>
+                    <option value="Jakarta Selatan" class="bg-slate-900" >Jakarta Selatan</option>
+                    <option value="Jakarta Timur" class="bg-slate-900" >Jakarta Timur</option>
+                </select>
+            </div>
+
+            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold transition flex items-center gap-2 shadow-lg shadow-blue-600/20">
+                <i class="fa-solid fa-filter"></i> Apply Filter
+            </button>
+        </div>
+
+        <button type="button" onclick="exportData()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold transition flex items-center gap-2 border border-slate-700">
+            <i class="fa-solid fa-file-excel text-emerald-400"></i> Export Summary
+        </button>
+    </form>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-slate-900 rounded-2xl p-4.5 flex items-center justify-between shadow-md border border-slate-800/80">
+            <div>
+                <p class="text-xs text-slate-400 font-medium">Total Driving Order (DO)</p>
+                <h3 class="text-2xl font-bold text-white mt-1">156 <span class="text-xs font-normal text-slate-400">DO</span></h3>
+            </div>
+            <div class="w-11 h-11 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-clipboard-list"></i>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl p-4.5 flex items-center justify-between shadow-md border border-slate-800/80">
+            <div>
+                <p class="text-xs text-slate-400 font-medium">Trip Berjalan (Aktif)</p>
+                <h3 class="text-2xl font-bold text-emerald-400 mt-1">42 <span class="text-xs font-normal text-slate-400">Petugas</span></h3>
+            </div>
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-route"></i>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl p-4.5 flex items-center justify-between shadow-md border border-slate-800/80">
+            <div>
+                <p class="text-xs text-slate-400 font-medium">Realisasi Target Trip</p>
+                <h3 class="text-2xl font-bold text-amber-400 mt-1">94.8%</h3>
+            </div>
+            <div class="w-11 h-11 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl p-4.5 flex items-center justify-between shadow-md border border-slate-800/80">
+            <div>
+                <p class="text-xs text-slate-400 font-medium">Pengemudi On-Duty</p>
+                <h3 class="text-2xl font-bold text-indigo-400 mt-1">88 <span class="text-xs font-normal text-slate-400">Orang</span></h3>
+            </div>
+            <div class="w-11 h-11 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-id-card"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="md:col-span-2 bg-slate-900 p-5 rounded-2xl flex flex-col justify-between shadow-md border border-slate-800/80">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider">Grafik Realisasi Trip Per Wilayah</h3>
+                <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-lg border border-emerald-500/20">Live API</span>
+            </div>
+            <div class="h-56">
+                <canvas id="tripChart"></canvas>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 p-5 rounded-2xl flex flex-col justify-between shadow-md border border-slate-800/80">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider">Status Operasional DO</h3>
+            </div>
+            <div class="h-56 flex items-center justify-center">
+                <canvas id="statusChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>            </div>
+        </main>
+
+    </div>
+
+    <!-- SCRIPT TOGGLE POPUP PROFIL -->
+    <script>
+        function toggleUserMenu(event) {
+            if (event) event.stopPropagation();
+            const menuCard = document.getElementById('userMenuCard');
+            if (menuCard) {
+                menuCard.classList.toggle('hidden');
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const btn = document.getElementById('userMenuBtn');
+            const card = document.getElementById('userMenuCard');
+            if (btn && card && !btn.contains(event.target) && !card.contains(event.target)) {
+                card.classList.add('hidden');
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+    <script>__P.apply();</script>
+</body>
+</html>

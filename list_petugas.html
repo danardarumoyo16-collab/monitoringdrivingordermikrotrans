@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Petugas - Monitoring Mikrotrans</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans h-screen w-screen overflow-hidden flex items-center justify-center p-1.5">
+
+    <div class="w-full h-full bg-[#060b19] rounded-2xl shadow-2xl shadow-black/80 flex overflow-hidden relative">
+
+        <!-- SIDEBAR NAVIGASI -->
+        <aside class="w-20 bg-[#092265] shrink-0 select-none h-full relative z-50 border-r border-blue-900/50 flex flex-col justify-between items-center pt-1.5 pb-2 overflow-visible">
+            
+            <!-- HEADER LOGO ATAS (IKON BINTANG TETAP POSISI ATAS) -->
+            <div class="w-full flex flex-col items-center text-center shrink-0 pt-0 mb-0">
+                <div class="w-8 h-8 flex items-center justify-center text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20"></path>
+                        <path d="M2 12h20"></path>
+                        <path d="m4.93 4.93 14.14 14.14"></path>
+                        <path d="m4.93 19.07 14.14-14.14"></path>
+                    </svg>
+                </div>
+                <!-- GARIS PEMBATAS ATAS -->
+                <div class="w-7 h-[2px] bg-white/70 rounded-full mt-0.5 mb-0.5"></div>
+            </div>
+
+            <!-- NAVIGASI MENU (DIBERI PT-2 AGAR IKON MENU TURUN DARI IKON BINTANG) -->
+            <nav class="flex-1 w-full flex flex-col items-center justify-evenly pt-2 pb-1 min-h-0 overflow-hidden">
+                <div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='index.html' title='Dashboard Analytics' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-chart-pie'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='ricek_realisasi.html' title='Ricek Realisasi' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-list-check'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='unit_operasi.html' title='Unit Operasi' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-bus'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='validasi_trip.html' title='Validasi Trip' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-square-check'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='headway.html' title='Headway' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-clock'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='kesesuaian.html' title='Kesesuaian' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-sliders'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='cari_bus.html' title='Cari Nomor Bus' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-magnifying-glass'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='manual_do.html' title='Manual DO' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-file-pen'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='update_trip.html' title='Update Trip' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-arrows-rotate'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='update_lokasi.html' title='Update Lokasi' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-location-dot'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='sebaran.html' title='Sebaran' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-map-location-dot'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='list_petugas.html' title='List Petugas' class='nav-btn active w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-users'></i>
+                            </a>
+                          </div><div class='w-full flex justify-center items-center shrink-0'>
+                            <a href='list_operator.html' title='List Operator' class='nav-btn  w-8 h-8 text-white hover:bg-white/15 flex items-center justify-center text-sm transition-colors duration-150 rounded-lg'>
+                                <i class='fa-solid fa-building'></i>
+                            </a>
+                          </div>            </nav>
+
+            <!-- FOOTER PROFIL USER & POPUP LOGOUT -->
+            <div class="w-full flex justify-center items-center shrink-0 pt-1 relative z-50">
+                
+                <!-- Tombol Trigger Ikon User -->
+                <button 
+                    type="button"
+                    onclick="toggleUserMenu(event)"
+                    id="userMenuBtn"
+                    title="Nama User (Staf)"
+                    class="w-8 h-8 rounded-full border border-blue-400/50 bg-blue-500/10 hover:bg-blue-600/30 active:scale-95 flex items-center justify-center text-white text-xs transition duration-200 focus:outline-none shadow-sm cursor-pointer"
+                >
+                    <i class="fa-solid fa-user-check pointer-events-none"></i>
+                </button>
+
+                <!-- POPUP CARD PROFIL LOGOUT -->
+                <div 
+                    id="userMenuCard" 
+                    class="hidden absolute left-16 bottom-0 w-[280px] bg-[#0a2569] border border-blue-900/80 rounded-2xl shadow-2xl p-5 z-[999] transition-all duration-200 flex flex-col gap-1.5"
+                >
+                    <!-- Role Badge User -->
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="px-2.5 py-0.5 rounded-md bg-blue-500/20 text-blue-300 text-[10px] font-bold tracking-wider uppercase border border-blue-400/30">
+                            Staf                        </span>
+                    </div>
+
+                    <!-- Nama User Dinamis -->
+                    <h3 class="text-lg font-extrabold text-white tracking-wide truncate">
+                        Nama User                    </h3>
+                    
+                    <!-- Email User Dinamis -->
+                    <p class="text-xs text-slate-200 font-normal opacity-90 truncate mb-3">
+                        user@transjakarta.co.id                    </p>
+                    
+                    <!-- Tombol Keluar (Logout) -->
+                    <a 
+                        href="login.html" 
+                        class="w-fit flex items-center gap-2 text-red-500 hover:text-red-400 font-semibold text-sm transition duration-150 group cursor-pointer"
+                    >
+                        <i class="fa-solid fa-arrow-right-from-bracket text-base transform group-hover:-translate-x-0.5 transition"></i>
+                        <span>Keluar</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 flex flex-col min-w-0 bg-slate-950 h-full overflow-hidden">
+            <header class="h-[80px] bg-slate-950 px-6 flex justify-between items-center shrink-0">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center text-lg shadow-md">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-base font-bold text-white tracking-wide">List Petugas</h2>
+                        <p class="text-xs text-slate-400"></p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="flex-1 p-5 flex flex-col gap-5 overflow-y-auto no-scrollbar min-h-0">
+                
+<div class="flex-1 flex flex-col gap-3 min-h-0">
+    
+    <!-- BARIS PERIODE TANGGAL DI ATAS -->
+    <form method="GET" action="" id="formPeriodePetugas" class="flex items-center gap-2 text-xs shrink-0 relative z-30">
+        <span class="text-slate-300 font-medium">Periode</span>
+        <input 
+            type="date" 
+            name="periode" 
+            id="inputPeriode"
+            value="2000-01-04" 
+            onchange="document.getElementById('formPeriodePetugas').submit()" 
+            onclick="try{ this.showPicker(); }catch(e){}"
+            class="bg-slate-900 text-white border border-slate-700 px-3 py-1 rounded-lg focus:outline-none cursor-pointer shadow-sm [color-scheme:dark]"
+        >
+    </form>
+
+    <!-- HEADER TOP BAR: CEK, JUMLAH PETUGAS & EXPORT ICON -->
+    <div class="bg-slate-900/90 p-2.5 rounded-xl flex flex-wrap justify-between items-center gap-3 shrink-0 shadow-md border border-slate-800 text-xs">
+        <div class="flex items-center gap-6 flex-wrap">
+            <button type="button" onclick="document.getElementById('formPeriodePetugas').submit()" class="px-5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg font-medium border border-slate-700 transition shadow-sm">
+                cek
+            </button>
+            
+            <span class="text-slate-200 font-normal">Jumlah Petugas : <strong class="font-bold text-white text-sm">246</strong></span>
+        </div>
+
+        <!-- Tombol Icon Export Download -->
+        <button type="button" onclick="exportListPetugasCSV()" title="Export Data" class="p-2 bg-blue-400 hover:bg-blue-300 text-slate-950 rounded-xl transition shadow-md flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+        </button>
+    </div>
+
+    <!-- MAIN CONTENT 2 TABEL (KIRI MASTER PETUGAS, KANAN LOG DETAIL TRIP) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-2.5 flex-1 min-h-0">
+        
+        <!-- TABEL KIRI: NO | NIK | PETUGAS -->
+        <div class="lg:col-span-3 bg-slate-900 rounded-xl border border-slate-800/80 flex flex-col overflow-hidden shadow-md">
+            <div class="flex-1 overflow-auto no-scrollbar">
+                <table class="w-full text-xs text-left text-slate-300">
+                    <thead class="text-[11px] bg-slate-950 text-slate-400 sticky top-0 border-b border-slate-800 z-10">
+                        <tr>
+                            <th class="px-2.5 py-2">No</th>
+                            <th class="px-2.5 py-2">Nik</th>
+                            <th class="px-2.5 py-2">Petugas</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 text-[11px]">
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">18</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">106865</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">AHMAD JABIDI</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">19</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">115410</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">AHMAD JUNAIDI</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">20</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">100590</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">AHMAD JUNARY</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">21</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">102977</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">AHMAD LANANG FEMBR...</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">22</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">104325</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">AHMAD ROFIUDDIN</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">23</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">102276</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">AJAT SUDRAJAT</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">24</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">106652</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">AJI LUNGGUT</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">25</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">105128</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">AKHMAD ZULKARNAIN</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">26</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">102304</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">ALI DWI PURNOMO</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">27</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">100904</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">AMRIUS</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">28</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">102169</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">ANDI</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">29</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">102144</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">ANDI</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">30</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">102633</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">ANDI RACHMAT</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition cursor-pointer">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">31</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">106295</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium uppercase">ANGGA ESA RAKSA</td>
+                        </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TABEL KANAN: TANGGAL | RUTE | LOKASI | NOMOR BUS | BERANGKAT | TIBA | DIBUAT | NAMA PERJALANAN | ODOMETER -->
+        <div class="lg:col-span-9 bg-slate-900 rounded-xl border border-slate-800/80 flex flex-col overflow-hidden shadow-md">
+            <div class="flex-1 overflow-auto no-scrollbar">
+                <table class="w-full text-xs text-left text-slate-300 whitespace-nowrap">
+                    <thead class="text-[11px] bg-slate-950 text-slate-400 sticky top-0 border-b border-slate-800 z-10">
+                        <tr>
+                            <th class="px-2.5 py-2">Tanggal</th>
+                            <th class="px-2.5 py-2">Rute</th>
+                            <th class="px-2.5 py-2">Lokasi</th>
+                            <th class="px-2.5 py-2">Nomor Bus</th>
+                            <th class="px-2.5 py-2">Berangkat</th>
+                            <th class="px-2.5 py-2">Tiba</th>
+                            <th class="px-2.5 py-2">Dibuat</th>
+                            <th class="px-2.5 py-2">Nama Perjalanan</th>
+                            <th class="px-2.5 py-2">Odometer</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 text-[11px]">
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">JAK.01</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">PLUMPANG</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-541</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:00</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">06:10</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:00</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium">TJ PRIOK - PLUMPANG</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">172050</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">JAK.01</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">TJ PRIOK</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-558</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:02</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">06:15</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:02</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium">TJ PRIOK - PLUMPANG</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">189200</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">JAK.02</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">KP RAMBUTAN</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-568</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:04</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">06:22</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:04</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium">KP RAMBUTAN - PS MINGGU</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">142100</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">JAK.02</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">PS MINGGU</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-540</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:07</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">06:30</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:07</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium">KP RAMBUTAN - PS MINGGU</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">156400</td>
+                        </tr>
+                                                <tr class="hover:bg-slate-800/40 transition">
+                            <td class="px-2.5 py-1.5 text-slate-400 font-mono">04/01/2000</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">JAK.05</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">SEMPER</td>
+                            <td class="px-2.5 py-1.5 text-slate-200 font-mono font-semibold">KLM-552</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:11</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">06:35</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">05:11</td>
+                            <td class="px-2.5 py-1.5 text-white font-medium">SEMPER - ROROTAN</td>
+                            <td class="px-2.5 py-1.5 text-slate-300 font-mono">210350</td>
+                        </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER STATUS BAR REALTIME -->
+    <div class="bg-slate-900/90 px-4 py-1.5 rounded-xl flex justify-between items-center text-[11px] font-mono border border-slate-800 shrink-0 text-slate-400">
+        <div class="flex items-center gap-3">
+            <span id="liveTimestampPetugas" class="text-blue-400 font-semibold">--</span>
+            <span class="text-emerald-400 font-semibold flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Server connected
+            </span>
+        </div>
+        <div>
+            update by : <span class="text-slate-300 font-semibold">Mikrotrans</span>
+        </div>
+    </div>
+
+</div>
+
+<!-- SCRIPT LIVE CLOCK & EXPORT CSV LIST PETUGAS -->
+<script>
+function updateLiveTimestampPetugas() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+    const elem = document.getElementById('liveTimestampPetugas');
+    if (elem) {
+        elem.innerText = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
+}
+
+setInterval(updateLiveTimestampPetugas, 1000);
+updateLiveTimestampPetugas();
+
+function exportListPetugasCSV() {
+    let csv = [];
+    csv.push("--- LIST PETUGAS ---");
+    csv.push("Jumlah Petugas," + "246");
+    csv.push("Periode," + "" + __P.iso + "");
+    csv.push("");
+    
+    csv.push("--- DAFTAR MASTER PETUGAS ---");
+    csv.push("NO,NIK,PETUGAS");
+        csv.push("18,106865,AHMAD JABIDI");
+        csv.push("19,115410,AHMAD JUNAIDI");
+        csv.push("20,100590,AHMAD JUNARY");
+        csv.push("21,102977,AHMAD LANANG FEMBR...");
+        csv.push("22,104325,AHMAD ROFIUDDIN");
+        csv.push("23,102276,AJAT SUDRAJAT");
+        csv.push("24,106652,AJI LUNGGUT");
+        csv.push("25,105128,AKHMAD ZULKARNAIN");
+        csv.push("26,102304,ALI DWI PURNOMO");
+        csv.push("27,100904,AMRIUS");
+        csv.push("28,102169,ANDI");
+        csv.push("29,102144,ANDI");
+        csv.push("30,102633,ANDI RACHMAT");
+        csv.push("31,106295,ANGGA ESA RAKSA");
+    
+    csv.push("");
+    csv.push("--- LOG AKTIVITAS TRIP PETUGAS ---");
+    csv.push("TANGGAL,RUTE,LOKASI,NOMOR BUS,BERANGKAT,TIBA,DIBUAT,NAMA PERJALANAN,ODOMETER");
+        csv.push("" + __P.dmy + ",JAK.01,PLUMPANG,KLM-541,05:00,06:10,05:00,TJ PRIOK - PLUMPANG,172050");
+        csv.push("" + __P.dmy + ",JAK.01,TJ PRIOK,KLM-558,05:02,06:15,05:02,TJ PRIOK - PLUMPANG,189200");
+        csv.push("" + __P.dmy + ",JAK.02,KP RAMBUTAN,KLM-568,05:04,06:22,05:04,KP RAMBUTAN - PS MINGGU,142100");
+        csv.push("" + __P.dmy + ",JAK.02,PS MINGGU,KLM-540,05:07,06:30,05:07,KP RAMBUTAN - PS MINGGU,156400");
+        csv.push("" + __P.dmy + ",JAK.05,SEMPER,KLM-552,05:11,06:35,05:11,SEMPER - ROROTAN,210350");
+    
+    let csvFile = new Blob([csv.join("\n")], { type: "text/csv" });
+    let downloadLink = document.createElement("a");
+    downloadLink.download = "List_Petugas_" + __P.iso + ".csv";
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+}
+</script>            </div>
+        </main>
+
+    </div>
+
+    <!-- SCRIPT TOGGLE POPUP PROFIL -->
+    <script>
+        function toggleUserMenu(event) {
+            if (event) event.stopPropagation();
+            const menuCard = document.getElementById('userMenuCard');
+            if (menuCard) {
+                menuCard.classList.toggle('hidden');
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const btn = document.getElementById('userMenuBtn');
+            const card = document.getElementById('userMenuCard');
+            if (btn && card && !btn.contains(event.target) && !card.contains(event.target)) {
+                card.classList.add('hidden');
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+    <script>__P.apply();</script>
+</body>
+</html>
